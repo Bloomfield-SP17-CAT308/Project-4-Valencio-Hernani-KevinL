@@ -3,9 +3,13 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
-        <event-group description="" sid="186900890870824" title="Connections">
+        <variable constant="0" name="ItemsRemoved" sid="342919232260211" static="0" type="number">0</variable>
+        <variable constant="0" name="EmptySlot" sid="797301375813981" static="0" type="number">-1</variable>
+        <variable constant="0" name="FoundSlot" sid="109609070049562" static="0" type="number">-1</variable>
+        <variable constant="0" name="AmountToAdd" sid="364796903591569" static="0" type="number">0</variable>
+        <event-group description="" disabled="1" sid="186900890870824" title="Connections">
             <sub-events>
-                <event-block sid="338160909879482">
+                <event-block disabled="1" sid="338160909879482">
                     <conditions>
                         <condition id="-2" name="On start of layout" sid="689739989765342" type="System" />
                     </conditions>
@@ -16,24 +20,17 @@
                             <param id="2" name="Interpolation">0</param>
                         </action>
                         <action id="11" name="Sync object" sid="170148201187023" type="Multiplayer">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                             <param id="1" name="Data">1</param>
                             <param id="2" name="Precision">2</param>
                             <param id="3" name="Bandwidth">0</param>
-                        </action>
-                        <action id="12" name="Sync instance variable" sid="662577134105348" type="Multiplayer">
-                            <param id="0" name="Object">Sprite2</param>
-                            <param id="1" name="Instance variable">Sprite2|inputs</param>
-                            <param id="2" name="Precision">3</param>
-                            <param id="3" name="Interpolation">0</param>
-                            <param id="4" name="Client value tag">&quot;inputs&quot;</param>
                         </action>
                         <action id="1" name="Connect" sid="631407335534849" type="Multiplayer">
                             <param id="0" name="Server">&quot;wss://multiplayer.scirra.com&quot;</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="441027656212771">
+                <event-block disabled="1" sid="441027656212771">
                     <conditions>
                         <condition id="2" name="On connected" sid="918832182192090" type="Multiplayer" />
                     </conditions>
@@ -43,7 +40,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="197112678403608">
+                <event-block disabled="1" sid="197112678403608">
                     <conditions>
                         <condition id="4" name="On logged in" sid="861457194513339" type="Multiplayer" />
                     </conditions>
@@ -56,13 +53,13 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="795848896593810">
+                <event-block disabled="1" sid="795848896593810">
                     <conditions>
                         <condition id="5" name="On joined room" sid="994979430655316" type="Multiplayer" />
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="613055158437692">
+                        <event-block disabled="1" sid="613055158437692">
                             <conditions>
                                 <condition id="10" name="Is host" sid="636736306558027" type="Multiplayer" />
                             </conditions>
@@ -71,17 +68,13 @@
                                     <param id="0" name="Group name">&quot;Host&quot;</param>
                                     <param id="1" name="State">1</param>
                                 </action>
-                                <action id="-10" name="Set value" sid="786529369973828" type="Sprite2">
-                                    <param id="0" name="Instance variable">peerid2</param>
-                                    <param id="1" name="Value">Multiplayer.MyID</param>
-                                </action>
                                 <action id="13" name="Associate object with peer" sid="476209421592567" type="Multiplayer">
-                                    <param id="0" name="Object">Sprite2</param>
+                                    <param id="0" name="Object">Player</param>
                                     <param id="1" name="Peer ID">Multiplayer.MyID</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="836100027008710">
+                        <event-block disabled="1" sid="836100027008710">
                             <conditions>
                                 <condition id="-22" name="Else" sid="134020265455376" type="System" />
                             </conditions>
@@ -90,188 +83,110 @@
                                     <param id="0" name="Group name">&quot;Peer&quot;</param>
                                     <param id="1" name="State">1</param>
                                 </action>
-                                <action id="-9" name="Destroy" sid="798717732974286" type="Sprite2" />
+                                <action id="-9" name="Destroy" sid="798717732974286" type="Player" />
                             </actions>
                         </event-block>
                     </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="427194915104360" title="Peer">
+        <event-group description="" disabled="1" sid="427194915104360" title="Peer">
             <sub-events>
-                <event-block sid="555627890726687">
+                <event-block disabled="1" sid="555627890726687">
                     <conditions>
-                        <condition id="-18" name="On created" sid="224684216007640" type="Sprite2" />
+                        <condition id="-18" name="On created" sid="224684216007640" type="Player" />
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" sid="975693945796115" type="Sprite2">
-                            <param id="0" name="Instance variable">peerid2</param>
-                            <param id="1" name="Value">Multiplayer.PeerID</param>
-                        </action>
                         <action id="13" name="Associate object with peer" sid="915766735661666" type="Multiplayer">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                             <param id="1" name="Peer ID">Multiplayer.PeerID</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="140989401148228">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="614778064357410" type="Sprite2">
-                                    <param id="0" name="Instance variable">peerid2</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">Multiplayer.MyID</param>
-                                </condition>
-                            </conditions>
+                        <event-block disabled="1" sid="140989401148228">
+                            <conditions />
                             <actions>
                                 <action id="16" name="Enable local input prediction" sid="893058566282836" type="Multiplayer">
-                                    <param id="0" name="Object">Sprite2</param>
+                                    <param id="0" name="Object">Player</param>
                                 </action>
                             </actions>
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="934071335634914">
+                <event-block disabled="1" sid="934071335634914">
                     <conditions>
                         <condition id="17" name="On client update" sid="305839226132714" type="Multiplayer" />
-                        <condition id="-7" name="Compare instance variable" sid="197846069902376" type="Sprite2">
-                            <param id="0" name="Instance variable">peerid2</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">Multiplayer.MyID</param>
-                        </condition>
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="345375622209994">
+                        <event-block disabled="1" sid="345375622209994">
                             <conditions>
                                 <condition id="2" name="Key is down" sid="641169294907147" type="Keyboard">
                                     <param id="0" name="Key">37 (Left arrow)</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="372924010826189" type="Sprite2">
-                                    <param id="0" name="Instance variable">inputs</param>
-                                    <param id="1" name="Value">setbit(Self.inputs, 0, 1)</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
-                        <event-block sid="834527576560325">
+                        <event-block disabled="1" sid="834527576560325">
                             <conditions>
                                 <condition id="-22" name="Else" sid="395040094374031" type="System" />
                             </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="145008500843691" type="Sprite2">
-                                    <param id="0" name="Instance variable">inputs</param>
-                                    <param id="1" name="Value">setbit(Self.inputs, 0, 0)</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
-                        <event-block sid="462842701610081">
+                        <event-block disabled="1" sid="462842701610081">
                             <conditions>
                                 <condition id="2" name="Key is down" sid="507419152838327" type="Keyboard">
                                     <param id="0" name="Key">38 (Up arrow)</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="504686743383071" type="Sprite2">
-                                    <param id="0" name="Instance variable">inputs</param>
-                                    <param id="1" name="Value">setbit(Self.inputs, 1, 1)</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
-                        <event-block sid="727343439102088">
+                        <event-block disabled="1" sid="727343439102088">
                             <conditions>
                                 <condition id="-22" name="Else" sid="589778860650240" type="System" />
                             </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="337378096665233" type="Sprite2">
-                                    <param id="0" name="Instance variable">inputs</param>
-                                    <param id="1" name="Value">setbit(Self.inputs, 1, 0)</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
-                        <event-block sid="412836879328920">
+                        <event-block disabled="1" sid="412836879328920">
                             <conditions>
                                 <condition id="2" name="Key is down" sid="262553333609433" type="Keyboard">
                                     <param id="0" name="Key">39 (Right arrow)</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="988739420262076" type="Sprite2">
-                                    <param id="0" name="Instance variable">inputs</param>
-                                    <param id="1" name="Value">setbit(Self.inputs, 2, 1)</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
-                        <event-block sid="447865943615374">
+                        <event-block disabled="1" sid="447865943615374">
                             <conditions>
                                 <condition id="-22" name="Else" sid="949037803265729" type="System" />
                             </conditions>
-                            <actions>
-                                <action id="-10" name="Set value" sid="838840889300087" type="Sprite2">
-                                    <param id="0" name="Instance variable">inputs</param>
-                                    <param id="1" name="Value">setbit(Self.inputs, 2, 0)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="363525713550438">
-                            <conditions />
-                            <actions>
-                                <action id="14" name="Set client state" sid="119866923911801" type="Multiplayer">
-                                    <param id="0" name="Tag">&quot;inputs&quot;</param>
-                                    <param id="1" name="Value">Sprite2.inputs</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="208906945651794">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="999421242923812" type="Sprite2">
-                            <param id="0" name="Instance variable">peerid2</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">Multiplayer.MyID</param>
-                        </condition>
-                    </conditions>
+                <event-block disabled="1" sid="208906945651794">
+                    <conditions />
                     <actions />
                     <sub-events>
-                        <event-block sid="854553197978748">
-                            <conditions>
-                                <condition id="-8" name="Compare two values" sid="138619790856725" type="System">
-                                    <param id="0" name="First value">getbit(Sprite2.Inputs, 0)</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Second value">1</param>
-                                </condition>
-                            </conditions>
+                        <event-block disabled="1" sid="854553197978748">
+                            <conditions />
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="521112790646205" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="521112790646205" type="Player">
                                     <param id="0" name="Control">0</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="132071367058936">
-                            <conditions>
-                                <condition id="-8" name="Compare two values" sid="268413313254171" type="System">
-                                    <param id="0" name="First value">getbit(Sprite2.Inputs, 1)</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Second value">1</param>
-                                </condition>
-                            </conditions>
+                        <event-block disabled="1" sid="132071367058936">
+                            <conditions />
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="267467212401216" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="267467212401216" type="Player">
                                     <param id="0" name="Control">2</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="335861381590699">
-                            <conditions>
-                                <condition id="-8" name="Compare two values" sid="131656793643967" type="System">
-                                    <param id="0" name="First value">getbit(Sprite2.Inputs, 2)</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Second value">1</param>
-                                </condition>
-                            </conditions>
+                        <event-block disabled="1" sid="335861381590699">
+                            <conditions />
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="957404885378399" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="957404885378399" type="Player">
                                     <param id="0" name="Control">1</param>
                                 </action>
                             </actions>
@@ -280,137 +195,99 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="308194924593717" title="Host">
+        <event-group description="" disabled="1" sid="308194924593717" title="Host">
             <sub-events>
-                <event-block sid="782402346941704">
+                <event-block disabled="1" sid="782402346941704">
                     <conditions>
                         <condition id="11" name="On peer connected" sid="451172076844787" type="Multiplayer" />
                     </conditions>
                     <actions>
                         <action id="-3" name="Create object" sid="222584222201095" type="System">
-                            <param id="0" name="Object to create">Sprite2</param>
+                            <param id="0" name="Object to create">Player</param>
                             <param id="1" name="Layer">0</param>
                             <param id="2" name="X">WindowWidth/2</param>
                             <param id="3" name="Y">WindowHeight/2</param>
                         </action>
-                        <action id="-10" name="Set value" sid="888112054145784" type="Sprite2">
-                            <param id="0" name="Instance variable">peerid2</param>
-                            <param id="1" name="Value">Multiplayer.PeerID</param>
-                        </action>
                         <action id="13" name="Associate object with peer" sid="558338775380045" type="Multiplayer">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                             <param id="1" name="Peer ID">Multiplayer.PeerID</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="976300721277564">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="338496301736100" type="Sprite2">
-                            <param id="0" name="Instance variable">peerid2</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">Multiplayer.MyID</param>
-                        </condition>
-                    </conditions>
+                <event-block disabled="1" sid="976300721277564">
+                    <conditions />
                     <actions>
-                        <action behavior="Platform" id="11" name="Set enabled" sid="316420759779077" type="Sprite2">
+                        <action behavior="Platform" id="11" name="Set enabled" sid="316420759779077" type="Player">
                             <param id="0" name="State">1</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="895846437747223">
+                        <event-block disabled="1" sid="895846437747223">
                             <conditions>
                                 <condition id="2" name="Key is down" sid="499147104960475" type="Keyboard">
                                     <param id="0" name="Key">37 (Left arrow)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="348510334283439" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="348510334283439" type="Player">
                                     <param id="0" name="Control">0</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="736144354524932">
+                        <event-block disabled="1" sid="736144354524932">
                             <conditions>
                                 <condition id="2" name="Key is down" sid="944896916840623" type="Keyboard">
                                     <param id="0" name="Key">38 (Up arrow)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="291598177963828" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="291598177963828" type="Player">
                                     <param id="0" name="Control">2</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="746098605354801">
+                        <event-block disabled="1" sid="746098605354801">
                             <conditions>
                                 <condition id="2" name="Key is down" sid="942728571350548" type="Keyboard">
                                     <param id="0" name="Key">39 (Right arrow)</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="101698368813187" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="101698368813187" type="Player">
                                     <param id="0" name="Control">1</param>
                                 </action>
                             </actions>
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="416066434131758">
+                <event-block disabled="1" sid="416066434131758">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="805128898823069" type="Sprite2">
-                            <param id="0" name="Instance variable">peerid2</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Value">Multiplayer.MyID</param>
-                        </condition>
                         <condition id="-11" name="For Each" sid="491169972177997" type="System">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="-10" name="Set value" sid="171616576120079" type="Sprite2">
-                            <param id="0" name="Instance variable">inputs</param>
-                            <param id="1" name="Value">Multiplayer.PeerState(Sprite2.peerid2, &quot;inputs&quot;)</param>
-                        </action>
-                    </actions>
+                    <actions />
                     <sub-events>
-                        <event-block sid="826720556357538">
-                            <conditions>
-                                <condition id="-8" name="Compare two values" sid="233079414023143" type="System">
-                                    <param id="0" name="First value">getbit(Sprite2.inputs, 0)</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Second value">1</param>
-                                </condition>
-                            </conditions>
+                        <event-block disabled="1" sid="826720556357538">
+                            <conditions />
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="763171130206837" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="763171130206837" type="Player">
                                     <param id="0" name="Control">0</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="419346053503981">
-                            <conditions>
-                                <condition id="-8" name="Compare two values" sid="103559469216615" type="System">
-                                    <param id="0" name="First value">getbit(Sprite2.inputs, 1)</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Second value">1</param>
-                                </condition>
-                            </conditions>
+                        <event-block disabled="1" sid="419346053503981">
+                            <conditions />
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="768286635935656" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="768286635935656" type="Player">
                                     <param id="0" name="Control">2</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="120410819990562">
-                            <conditions>
-                                <condition id="-8" name="Compare two values" sid="847171841884777" type="System">
-                                    <param id="0" name="First value">getbit(Sprite2.inputs, 2)</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Second value">1</param>
-                                </condition>
-                            </conditions>
+                        <event-block disabled="1" sid="120410819990562">
+                            <conditions />
                             <actions>
-                                <action behavior="Platform" id="7" name="Simulate control" sid="876673833038720" type="Sprite2">
+                                <action behavior="Platform" id="7" name="Simulate control" sid="876673833038720" type="Player">
                                     <param id="0" name="Control">1</param>
                                 </action>
                             </actions>
@@ -419,8 +296,8 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="524077330760475" title="Both" />
-        <event-group description="enamyAi" sid="831453176081455" title="enamyAI(B)">
+        <event-group description="" disabled="1" sid="524077330760475" title="Both" />
+        <event-group description="EnemyAi" sid="831453176081455" title="EnemyAI(B)">
             <sub-events>
                 <event-block sid="905344995158450">
                     <conditions>
@@ -511,7 +388,7 @@
                 <event-block sid="748783989986201">
                     <conditions>
                         <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="241534055665725" type="bird">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                         </condition>
                         <condition id="-4" name="Trigger once while true" sid="275335921377455" type="System" />
                     </conditions>
@@ -571,7 +448,7 @@
                 <event-block any="1" sid="886179153666197">
                     <conditions>
                         <condition id="0" name="On collision with another object" sid="217261206293353" type="bird">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                         </condition>
                         <condition id="0" name="On collision with another object" sid="376105126454012" type="bird">
                             <param id="0" name="Object">Sprite</param>
@@ -588,15 +465,15 @@
                 <event-block sid="552052511022505">
                     <conditions>
                         <condition id="0" name="On collision with another object" sid="368170347663225" type="bird">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" sid="761107029052140" type="Sprite2">
+                        <action id="-10" name="Set value" sid="761107029052140" type="Player">
                             <param id="0" name="Instance variable">moveback</param>
                             <param id="1" name="Value">1</param>
                         </action>
-                        <action behavior="Platform" id="7" name="Simulate control" sid="905747894579124" type="Sprite2">
+                        <action behavior="Platform" id="7" name="Simulate control" sid="905747894579124" type="Player">
                             <param id="0" name="Control">2</param>
                         </action>
                     </actions>
@@ -606,14 +483,14 @@
                         <condition id="-6" name="Every X seconds" sid="640831163644337" type="System">
                             <param id="0" name="Interval (seconds)">1.0</param>
                         </condition>
-                        <condition id="-7" name="Compare instance variable" sid="829137723178768" type="Sprite2">
+                        <condition id="-7" name="Compare instance variable" sid="829137723178768" type="Player">
                             <param id="0" name="Instance variable">moveback</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" sid="310227904553818" type="Sprite2">
+                        <action id="-10" name="Set value" sid="310227904553818" type="Player">
                             <param id="0" name="Instance variable">moveback</param>
                             <param id="1" name="Value">0</param>
                         </action>
@@ -622,21 +499,21 @@
                 <event-block sid="654863910158263">
                     <conditions>
                         <condition id="-1" name="Every tick" sid="642440160311787" type="System" />
-                        <condition id="-7" name="Compare instance variable" sid="901414576608099" type="Sprite2">
+                        <condition id="-7" name="Compare instance variable" sid="901414576608099" type="Player">
                             <param id="0" name="Instance variable">moveback</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-17" name="Move forward" sid="722191613595723" type="Sprite2">
+                        <action id="-17" name="Move forward" sid="722191613595723" type="Player">
                             <param id="0" name="Distance">-4</param>
                         </action>
                     </actions>
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="enamyAi" sid="447616609489284" title="enamyAI(W)">
+        <event-group description="EnemyAi" sid="447616609489284" title="EnemyAI(W)">
             <sub-events>
                 <event-block sid="852762220549631">
                     <conditions>
@@ -716,7 +593,7 @@
                 <event-block sid="865850252102749">
                     <conditions>
                         <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="826504684763459" type="wolf">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -731,15 +608,15 @@
                 <event-block sid="605463685338913">
                     <conditions>
                         <condition id="0" name="On collision with another object" sid="262999008806729" type="wolf">
-                            <param id="0" name="Object">Sprite2</param>
+                            <param id="0" name="Object">Player</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" sid="539330360126432" type="Sprite2">
+                        <action id="-10" name="Set value" sid="539330360126432" type="Player">
                             <param id="0" name="Instance variable">moveback</param>
                             <param id="1" name="Value">1</param>
                         </action>
-                        <action behavior="Platform" id="7" name="Simulate control" sid="197375413790591" type="Sprite2">
+                        <action behavior="Platform" id="7" name="Simulate control" sid="197375413790591" type="Player">
                             <param id="0" name="Control">2</param>
                         </action>
                     </actions>
@@ -749,14 +626,14 @@
                         <condition id="-6" name="Every X seconds" sid="888336340050940" type="System">
                             <param id="0" name="Interval (seconds)">1.0</param>
                         </condition>
-                        <condition id="-7" name="Compare instance variable" sid="195922301328022" type="Sprite2">
+                        <condition id="-7" name="Compare instance variable" sid="195922301328022" type="Player">
                             <param id="0" name="Instance variable">moveback</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" sid="394655446517394" type="Sprite2">
+                        <action id="-10" name="Set value" sid="394655446517394" type="Player">
                             <param id="0" name="Instance variable">moveback</param>
                             <param id="1" name="Value">0</param>
                         </action>
@@ -765,15 +642,620 @@
                 <event-block sid="704253194919140">
                     <conditions>
                         <condition id="-1" name="Every tick" sid="226442638155323" type="System" />
-                        <condition id="-7" name="Compare instance variable" sid="941541585984027" type="Sprite2">
+                        <condition id="-7" name="Compare instance variable" sid="941541585984027" type="Player">
                             <param id="0" name="Instance variable">moveback</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-17" name="Move forward" sid="137151446364919" type="Sprite2">
+                        <action id="-17" name="Move forward" sid="137151446364919" type="Player">
                             <param id="0" name="Distance">-4</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="638358034534985">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="233384738704272" type="System" />
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="123116453051553" type="Player">
+                    <param id="0" name="Instance variable">ItemSelect</param>
+                    <param id="1" name="Value">spr_invSlot.SlotID</param>
+                </action>
+                <action id="-10" name="Set value" sid="167745735028217" type="Selector">
+                    <param id="0" name="Instance variable">ItemSelect</param>
+                    <param id="1" name="Value">Player.ItemSelect</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="903686476720249" type="TestSlotAmt">
+                    <param id="0" name="Pin to">Player</param>
+                    <param id="1" name="Mode">1</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="177035537249764" type="spr_invSlot">
+                    <param id="0" name="Pin to">Player</param>
+                    <param id="1" name="Mode">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="714443063594774" type="Selector">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="913751022310817" title="Testing Inventory">
+            <sub-events>
+                <event-block sid="280085311910342">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="117717357101262" type="Mouse">
+                            <param id="0" name="Mouse button">2</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">spr_invSlot</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="210176038423152" type="Function">
+                            <param id="0" name="Name">&quot;RemoveFromInv&quot;</param>
+                            <param id="1" name="Parameter {n}">spr_invSlot.SlotID{###}5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="176219581373795">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="627651052357588" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">spr_grounditem</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="276170132954473" type="Function">
+                            <param id="0" name="Name">&quot;AddToInv&quot;</param>
+                            <param id="1" name="Parameter {n}">spr_grounditem.AnimationFrame</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="463518469882375">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="715413201060383" type="Mouse">
+                            <param id="0" name="Mouse button">2</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">spr_grounditem</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="445849472086119" type="Function">
+                            <param id="0" name="Name">&quot;AddToInv&quot;</param>
+                            <param id="1" name="Parameter {n}">spr_grounditem.AnimationFrame{###}5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="459740747006705">
+                    <conditions>
+                        <condition id="6" name="On object clicked" sid="178575890910293" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">spr_invSlot</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="315930074725317" type="Function">
+                            <param id="0" name="Name">&quot;RemoveFromInv&quot;</param>
+                            <param id="1" name="Parameter {n}">spr_invSlot.SlotID{###}1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="583300282495485" title="Selection">
+            <sub-events>
+                <event-block sid="930778487226022">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="816262416871162" type="Keyboard">
+                            <param id="0" name="Key">65 (A)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="945275828954856">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="294764577887958" type="Selector">
+                                    <param id="0" name="Instance variable">SlotSelectID</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="734175030872194" type="Selector">
+                                    <param id="0" name="Instance variable">SlotSelectID</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="822718391085650" type="Player">
+                                    <param id="0" name="Instance variable">CurrentItem</param>
+                                    <param id="1" name="Value">arr_inventory.At(Selector.SlotSelectID)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="946945555973977">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="728439898602422" type="Keyboard">
+                            <param id="0" name="Key">68 (D)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="313057389392434">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="413596981876704" type="Selector">
+                                    <param id="0" name="Instance variable">SlotSelectID</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="961080662130708" type="Selector">
+                                    <param id="0" name="Instance variable">SlotSelectID</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="381017894621729" type="Player">
+                                    <param id="0" name="Instance variable">CurrentItem</param>
+                                    <param id="1" name="Value">arr_inventory.At(Selector.SlotSelectID)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="266945520612727">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="761521465283688" type="Keyboard">
+                            <param id="0" name="Key">87 (W)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="654441888686389" type="Function">
+                            <param id="0" name="Name">&quot;AddToInv&quot;</param>
+                            <param id="1" name="Parameter {n}">Player.CurrentItem{###}1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="473556520796678">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="192623661766306" type="Keyboard">
+                            <param id="0" name="Key">83 (S)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="773974679575683" type="Function">
+                            <param id="0" name="Name">&quot;RemoveFromInv&quot;</param>
+                            <param id="1" name="Parameter {n}">Selector.SlotSelectID{###}1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="134888153216456">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="562893584369546" type="Keyboard">
+                            <param id="0" name="Key">69 (E)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="904127071425038">
+                            <conditions>
+                                <condition id="-9" inverted="1" name="Is visible" sid="768946099032021" type="spr_invSlot" />
+                                <condition id="-9" inverted="1" name="Is visible" sid="928836560549365" type="TestSlotAmt" />
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="826171024866889" type="spr_invSlot">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="860011599484882" type="TestSlotAmt">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action behavior="Platform" id="0" name="Set ignoring input" sid="612055348468628" type="Player">
+                                    <param id="0" name="Input">1</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="133400425555772" type="Selector">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="574855814982271">
+                                    <conditions>
+                                        <condition id="-20" name="Pick highest/lowest" sid="961990491685341" type="spr_invSlot">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Instance variable">SlotID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Set position" sid="236875087344471" type="Selector">
+                                            <param id="0" name="X">spr_invSlot.X</param>
+                                            <param id="1" name="Y">spr_invSlot.Y</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="684725686726078">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="213885142421950" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="219684428824851" type="spr_invSlot">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="552145039804764" type="TestSlotAmt">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action behavior="Platform" id="0" name="Set ignoring input" sid="900022610829874" type="Player">
+                                    <param id="0" name="Input">0</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="512420017627634" type="Selector">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="229422851319992">
+                    <conditions>
+                        <condition id="-9" name="Is visible" sid="883843830031281" type="Selector" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="167912688544579">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="142850622159693" type="System">
+                                    <param id="0" name="Object">spr_invSlot</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="297490299529525">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="540578745488374" type="Selector">
+                                            <param id="0" name="Instance variable">SlotSelectID</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">spr_invSlot.SlotID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Set position" sid="917400472507355" type="Selector">
+                                            <param id="0" name="X">spr_invSlot.X</param>
+                                            <param id="1" name="Y">spr_invSlot.Y</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="444901612761079">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="315229110410571" type="Keyboard">
+                            <param id="0" name="Key">70 (F)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="718218793940187">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="354391981349540" type="Player">
+                                    <param id="0" name="Instance variable">Select2</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" sid="130823736516061" type="Player">
+                                    <param id="0" name="Object">spr_grounditem</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="Image point">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="830110833243893">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="492608433512875" type="Player">
+                                    <param id="0" name="Instance variable">Select1</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="120462408363123" type="Player">
+                                    <param id="0" name="Instance variable">Select1</param>
+                                    <param id="1" name="Value">Player.CurrentItem</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="792814929098034">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="305079799059896" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="596125677911872" type="Player">
+                                    <param id="0" name="Instance variable">Select2</param>
+                                    <param id="1" name="Value">Player.CurrentItem</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="721593191031696" title="Inventory Functions">
+            <sub-events>
+                <event-block sid="892583659181475">
+                    <conditions>
+                        <condition id="0" name="On function" sid="291040141678273" type="Function">
+                            <param id="0" name="Name">&quot;UpdateInventory&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="990663236365348">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="427907922339122" type="System">
+                                    <param id="0" name="Object">spr_invSlot</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="806436171476657" type="spr_invSlot">
+                                    <param id="0" name="Frame number">arr_inventory.At(Self.SlotID)</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="340454964020959">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="547224383460804" type="TestSlotAmt">
+                                            <param id="0" name="Instance variable">SlotID</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">spr_invSlot.SlotID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="106992854126662" type="TestSlotAmt">
+                                            <param id="0" name="Text">&quot;x&quot; &amp; arr_inventory.At(Self.SlotID, 1)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="378554690162683">
+                    <conditions>
+                        <condition id="0" name="On function" sid="307058778432379" type="Function">
+                            <param id="0" name="Name">&quot;AddToInv&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="929725651040075" type="System">
+                            <param id="0" name="Variable">FoundSlot</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="972300415989880" type="System">
+                            <param id="0" name="Variable">EmptySlot</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="888987658109020">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="529984066699047" type="System">
+                                    <param id="0" name="First value">Function.ParamCount</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="104736547992961" type="System">
+                                    <param id="0" name="Variable">AmountToAdd</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="122264163406700">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="894465420159325" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="778724694458873" type="System">
+                                    <param id="0" name="Variable">AmountToAdd</param>
+                                    <param id="1" name="Value">Function.Param(1)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="321916458998633">
+                            <conditions>
+                                <condition id="3" name="For each element" sid="364856788047158" type="arr_inventory">
+                                    <param id="0" name="Axes">2</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="522716703466100" type="System">
+                                    <param id="0" name="Variable">FoundSlot</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">-1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="719230106076722">
+                                    <conditions>
+                                        <condition id="4" name="Compare current value" sid="860205641134151" type="arr_inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">0</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="676966307594916" type="System">
+                                            <param id="0" name="Variable">EmptySlot</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">-1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="679421923849361" type="System">
+                                            <param id="0" name="Variable">EmptySlot</param>
+                                            <param id="1" name="Value">arr_inventory.CurX</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="773644134334957">
+                                    <conditions>
+                                        <condition id="4" name="Compare current value" sid="242872030706004" type="arr_inventory">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Function.Param(0)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="719765167296236" type="System">
+                                            <param id="0" name="Variable">FoundSlot</param>
+                                            <param id="1" name="Value">arr_inventory.CurX</param>
+                                        </action>
+                                        <action id="3" name="Set at XY" sid="967987509256485" type="arr_inventory">
+                                            <param id="0" name="X">Self.CurX</param>
+                                            <param id="1" name="Y">1</param>
+                                            <param id="2" name="Value">Self.At(Self.CurX,1) + AmountToAdd</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="676990786553996" type="Function">
+                                            <param id="0" name="Name">&quot;UpdateInventory&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="815180805740900">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="248955007554447" type="System">
+                                            <param id="0" name="First value">arr_inventory.CurX</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">arr_inventory.Width - 1</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="725430409456241" type="System">
+                                            <param id="0" name="Variable">FoundSlot</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">-1</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="492720916161801" type="System">
+                                            <param id="0" name="Variable">EmptySlot</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Value">-1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="138619372966299" type="arr_inventory">
+                                            <param id="0" name="X">EmptySlot</param>
+                                            <param id="1" name="Value">Function.Param(0)</param>
+                                        </action>
+                                        <action id="3" name="Set at XY" sid="841343979283212" type="arr_inventory">
+                                            <param id="0" name="X">EmptySlot</param>
+                                            <param id="1" name="Y">1</param>
+                                            <param id="2" name="Value">AmountToAdd</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="241575293682948" type="Function">
+                                            <param id="0" name="Name">&quot;UpdateInventory&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="638736751282249">
+                    <conditions>
+                        <condition id="0" name="On function" sid="802720233009997" type="Function">
+                            <param id="0" name="Name">&quot;RemoveFromInv&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="445789470450584" type="System">
+                            <param id="0" name="Variable">ItemsRemoved</param>
+                            <param id="1" name="Value">min(arr_inventory.At(Function.Param(0),1), Function.Param(1))</param>
+                        </action>
+                        <action id="3" name="Set at XY" sid="888448799030849" type="arr_inventory">
+                            <param id="0" name="X">Function.Param(0)</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Value">Self.At(Function.Param(0),1) - ItemsRemoved</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="203455284881135">
+                            <conditions>
+                                <condition id="1" name="Compare at XY" sid="588308752823796" type="arr_inventory">
+                                    <param id="0" name="X">Function.Param(0)</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Comparison">0</param>
+                                    <param id="3" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Set at X" sid="656588567812927" type="arr_inventory">
+                                    <param id="0" name="X">Function.Param(0)</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="3" name="Set at XY" sid="266019134313682" type="arr_inventory">
+                                    <param id="0" name="X">Function.Param(0)</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="902943496197644">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Call function" sid="518044800460345" type="Function">
+                                    <param id="0" name="Name">&quot;UpdateInventory&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="1" name="Set return value" sid="422283060806177" type="Function">
+                                    <param id="0" name="Value">ItemsRemoved</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="868139372981721" title="Crafting List">
+            <sub-events>
+                <event-block sid="891793724261351">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="624546859140147" type="Player">
+                            <param id="0" name="Object">spr_grounditem</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="219053265368421" type="Function">
+                            <param id="0" name="Name">&quot;AddToInv&quot;</param>
+                            <param id="1" name="Parameter {n}">spr_grounditem.AnimationFrame{###}1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="906294612276866">
+                    <conditions>
+                        <condition id="-16" name="Is on layer" sid="856503827821530" type="spr_grounditem">
+                            <param id="0" name="Layer">2</param>
+                        </condition>
+                        <condition id="-15" name="Pick nearest/furthest" sid="149005082819177" type="spr_grounditem">
+                            <param id="0" name="Which">0</param>
+                            <param id="1" name="X">Player.X</param>
+                            <param id="2" name="Y">Player.Y</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="380579829397938" type="spr_grounditem">
+                            <param id="0" name="Frame number">Player.Select1 + Player.Select2</param>
+                        </action>
+                        <action id="2" name="Stop" sid="370856079858763" type="spr_grounditem" />
+                        <action id="-16" name="Wait" sid="530250190318720" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="232529891433096" type="Player">
+                            <param id="0" name="Instance variable">Select1</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="905498309185101" type="Player">
+                            <param id="0" name="Instance variable">Select2</param>
+                            <param id="1" name="Value">0</param>
                         </action>
                     </actions>
                 </event-block>

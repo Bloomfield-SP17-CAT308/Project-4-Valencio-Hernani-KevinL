@@ -10,15 +10,19 @@
     <unique-id>pzpyq8ho82w4</unique-id>
     <saved-with-version>23900</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Multiplayer" version="1">Multiplayer</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
         <behavior author="Scirra" id="LOS" version="1">Line Of Sight</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
         <behavior author="Scirra" id="Turret" version="1">Turret</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
@@ -64,12 +68,14 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Sprite2" sid="765032422688482">
+        <object-type name="Player" sid="765032422688482">
             <plugin id="Sprite" />
             <instance-variables>
-                <instance-variable name="inputs" sid="898646908932349" type="number" />
-                <instance-variable name="peerid2" sid="470885724238695" type="string" />
                 <instance-variable name="moveback" sid="202270782043200" type="number" />
+                <instance-variable name="CurrentItem" sid="443825530269110" type="number" />
+                <instance-variable name="ItemSelect" sid="522105471570404" type="number" />
+                <instance-variable name="Select1" sid="825692861848638" type="number" />
+                <instance-variable name="Select2" sid="297912480449736" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Platform" sid="728216694871976">
@@ -151,6 +157,103 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="TestSlotAmt" sid="701175163212486">
+            <plugin id="Text" />
+            <instance-variables>
+                <instance-variable name="SlotID" sid="267530551971126" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Pin" sid="726981211743011">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="Player2" sid="960298655078359">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="ItemSelect" sid="298075385758053" type="number" />
+                <instance-variable name="CurrentItem" sid="942624109479137" type="number" />
+                <instance-variable name="Select1" sid="898366444077894" type="number" />
+                <instance-variable name="Select2" sid="794829659713238" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Platform" sid="462964186302841">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="378154504408519" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Selector" sid="835230392579184">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="ItemSelect" sid="298108454310595" type="number" />
+                <instance-variable name="SlotSelectID" sid="740671441813869" type="number" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="952972672512135" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Ground" sid="842300541759086">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="520765575433133">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="378547947696383" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type global="1" name="arr_inventory" sid="414577678481554">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="spr_grounditem" sid="621550473389724">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="7" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="924895223592483" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="spr_invSlot" sid="759623389952414">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="SlotID" sid="777846426769377" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Pin" sid="123618240964379">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="7" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="222872460435151" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Mouse" sid="377291135322713">
+            <plugin id="Mouse" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
@@ -163,6 +266,7 @@
         <global-instance type="Multiplayer" uid="2" />
         <global-instance type="Function" uid="3" />
         <global-instance type="Keyboard" uid="4" />
+        <global-instance type="Mouse" uid="9" />
     </global-instances>
     <sounds-folder />
     <music-folder />
