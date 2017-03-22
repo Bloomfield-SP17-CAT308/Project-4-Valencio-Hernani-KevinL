@@ -18,6 +18,7 @@
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="progressbar" version="1">Progress bar</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
@@ -76,6 +77,7 @@
                 <instance-variable name="ItemSelect" sid="522105471570404" type="number" />
                 <instance-variable name="Select1" sid="825692861848638" type="number" />
                 <instance-variable name="Select2" sid="297912480449736" type="number" />
+                <instance-variable name="hp" sid="506709390777985" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Platform" sid="728216694871976">
@@ -90,7 +92,16 @@
             </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="677236081088985" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.510638" hotspotY="0.578431" original-source="C:\Users\heros\Desktop\coop players.png">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="0.989362" y="0" />
+                            <point x="1" y="1" />
+                            <point x="1" y="1" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
@@ -108,6 +119,7 @@
             <instance-variables>
                 <instance-variable name="movment" sid="861125605696465" type="number" />
                 <instance-variable name="restock" sid="443618754978228" type="number" />
+                <instance-variable name="hp" sid="774132195726105" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Platform" sid="947079585935452">
@@ -122,8 +134,28 @@
             </behaviors>
             <animation-folder>
                 <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="452048215722540" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.588517" hotspotY="0.527397" original-source="C:\Users\heros\Desktop\wolf_01.png">
+                        <collision-poly>
+                            <point x="0.4689" y="0.356164" />
+                            <point x="0.588517" y="0.376712" />
+                            <point x="0.889952" y="0.0958904" />
+                            <point x="0.789474" y="0.815068" />
+                            <point x="0.588517" y="0.69863" />
+                            <point x="0.287081" y="0.958904" />
+                            <point x="0.00478469" y="0.527397" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.588517" hotspotY="0.472603" original-source="C:\Users\heros\Desktop\wolf_01.png">
+                        <collision-poly>
+                            <point x="0.00478469" y="0.472603" />
+                            <point x="0.287081" y="0.0410959" />
+                            <point x="0.588517" y="0.30137" />
+                            <point x="0.789474" y="0.184932" />
+                            <point x="0.889952" y="0.90411" />
+                            <point x="0.588517" y="0.623288" />
+                            <point x="0.4689" y="0.643836" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
@@ -138,6 +170,7 @@
                 <instance-variable name="restock" sid="255471866035984" type="number" />
                 <instance-variable name="OH" sid="352465276689824" type="number" />
                 <instance-variable name="reset" sid="344999221349526" type="number" />
+                <instance-variable name="hp" sid="112936229142406" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="LineOfSight" sid="460561891398344">
@@ -254,10 +287,57 @@
         <object-type name="Mouse" sid="377291135322713">
             <plugin id="Mouse" />
         </object-type>
+        <object-type name="bullit" sid="934811935124503">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="630995187047876">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="899895989412557" speed="5">
+                    <frame duration="1" hotspotX="0.45" hotspotY="0.375" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="endOfTatorial" sid="213386209631969">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="door" sid="413989675818697">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="525779187578352" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="healthp1" sid="979767246274584">
+            <plugin id="progressbar" />
+            <behaviors>
+                <behavior-type name="Pin" sid="487785553206863">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="pinpin" sid="108998079104662">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Pin" sid="695872319692614">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="191939004923515" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
-        <layout>Layout 1.xml</layout>
+        <layout>level1.xml</layout>
+        <layout>level2.xml</layout>
+        <layout>end.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>Event sheet 1.xml</event-sheet>

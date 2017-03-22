@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable constant="0" name="carryoveer" sid="245415339689390" static="0" type="number">10</variable>
         <variable constant="0" name="ItemsRemoved" sid="342919232260211" static="0" type="number">0</variable>
         <variable constant="0" name="EmptySlot" sid="797301375813981" static="0" type="number">-1</variable>
         <variable constant="0" name="FoundSlot" sid="109609070049562" static="0" type="number">-1</variable>
@@ -476,6 +477,10 @@
                         <action behavior="Platform" id="7" name="Simulate control" sid="905747894579124" type="Player">
                             <param id="0" name="Control">2</param>
                         </action>
+                        <action id="-12" name="Subtract from" sid="258746083930602" type="Player">
+                            <param id="0" name="Instance variable">hp</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="490512292706073">
@@ -509,6 +514,18 @@
                         <action id="-17" name="Move forward" sid="722191613595723" type="Player">
                             <param id="0" name="Distance">-4</param>
                         </action>
+                    </actions>
+                </event-block>
+                <event-block sid="661296854848169">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="205932552477528" type="bird">
+                            <param id="0" name="Instance variable">hp</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="253554891419279" type="bird" />
                     </actions>
                 </event-block>
             </sub-events>
@@ -619,6 +636,10 @@
                         <action behavior="Platform" id="7" name="Simulate control" sid="197375413790591" type="Player">
                             <param id="0" name="Control">2</param>
                         </action>
+                        <action id="-12" name="Subtract from" sid="369595726346868" type="Player">
+                            <param id="0" name="Instance variable">hp</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="154313042929755">
@@ -654,6 +675,18 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="656768810362848">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="829108838086851" type="wolf">
+                            <param id="0" name="Instance variable">hp</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="316113094509036" type="wolf" />
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-block sid="638358034534985">
@@ -679,6 +712,18 @@
                 </action>
                 <action id="-15" name="Set visible" sid="714443063594774" type="Selector">
                     <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-10" name="Set value" sid="356360646560377" type="Player">
+                    <param id="0" name="Instance variable">hp</param>
+                    <param id="1" name="Value">carryoveer</param>
+                </action>
+                <action id="-9" name="Set value" sid="830516372424495" type="System">
+                    <param id="0" name="Variable">carryoveer</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="565468327974745" type="healthp1">
+                    <param id="0" name="Pin to">pinpin</param>
+                    <param id="1" name="Mode">0</param>
                 </action>
             </actions>
         </event-block>
@@ -1261,5 +1306,152 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-group description="" sid="746419195158853" title="playerbehavur">
+            <sub-events>
+                <event-block sid="972790095193635">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="554693954168080" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Set flipped" sid="770804558578711" type="Player">
+                            <param id="0" name="State">0</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="685584096280522" type="Player">
+                            <param id="0" name="Angle">180</param>
+                        </action>
+                        <action id="8" name="Set flipped" sid="925134631237111" type="pinpin">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="841703497919105">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="303898430715106" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Set flipped" sid="558433950513607" type="Player">
+                            <param id="0" name="State">1</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="361480532782073" type="Player">
+                            <param id="0" name="Angle">0</param>
+                        </action>
+                        <action id="8" name="Set flipped" sid="769736986524335" type="pinpin">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="274216062525513">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="172038711853530" type="Keyboard">
+                            <param id="0" name="Key">90 (Z)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="681782777878887" type="Player">
+                            <param id="0" name="Object">bullit</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="294425752098813">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="739393451402738" type="bullit">
+                            <param id="0" name="Object">wolf</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="847500067217137" type="bullit" />
+                        <action id="-12" name="Subtract from" sid="875103568889779" type="wolf">
+                            <param id="0" name="Instance variable">hp</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="322414593299028">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="759601065969788" type="bullit">
+                            <param id="0" name="Object">bird</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="906713850200541" type="bullit" />
+                        <action id="-12" name="Subtract from" sid="846899674225002" type="bird">
+                            <param id="0" name="Instance variable">hp</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="838455773147008">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="269466615525888" type="Player">
+                            <param id="0" name="Instance variable">hp</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="226367570557185" type="Player" />
+                        <action id="-16" name="Wait" sid="803024308056516" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="955179048617809" type="System">
+                            <param id="0" name="Layout">end</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="672541320207486">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="803692989475019" type="Keyboard">
+                    <param id="0" name="Key">32 (Space)</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="507598918004548" type="System">
+                    <param id="0" name="First value">LayoutName</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">&quot;end&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="394260929247910" type="System">
+                    <param id="0" name="Layout">level1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="264326976950060">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="657821163171379" type="Player">
+                    <param id="0" name="Object">door</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="357276721698209" type="System">
+                    <param id="0" name="Variable">carryoveer</param>
+                    <param id="1" name="Value">player.hp</param>
+                </action>
+                <action id="-43" name="Go to next/previous layout" sid="245864767918125" type="System">
+                    <param id="0" name="Which">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="559092344650978">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="257365095047404" type="System" />
+            </conditions>
+            <actions>
+                <action id="3" name="Set progress" sid="803578058313558" type="healthp1">
+                    <param id="0" name="Value">Player.hp</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="429528047938195" type="pinpin">
+                    <param id="0" name="Object">Player</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>
